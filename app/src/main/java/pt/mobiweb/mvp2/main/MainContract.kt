@@ -9,6 +9,7 @@ interface MainContract {
     interface View{
         fun navigateToSignInScreen()
     }
+
     interface Presenter{
         fun signInButtonClick()
     }

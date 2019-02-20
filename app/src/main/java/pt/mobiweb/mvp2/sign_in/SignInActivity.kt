@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import pt.mobiweb.mvp2.R
-import pt.mobiweb.mvp2.after_sign_in.AfterSuccessSignInActivity
+import pt.mobiweb.mvp2.home.HomeActivity
 
 class SignInActivity : AppCompatActivity(), SignInContract.View {
 
@@ -23,7 +23,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
     }
 
     override fun navigateToSuccessfulSignIn() {
-        val intent = Intent(applicationContext, AfterSuccessSignInActivity::class.java)
+        val intent = Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)
     }
 
