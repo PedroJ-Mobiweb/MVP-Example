@@ -1,15 +1,13 @@
 package pt.mobiweb.mvp2.home
 
-import android.annotation.SuppressLint
-import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import pt.mobiweb.mvp2.home.recycler_view.model.PostModel
 import pt.mobiweb.mvp2.utils.InternetCheck
+import pt.mobiweb.mvp2.utils.dropBreadcrumb
 import pt.mobiweb.mvp2.utils.retrofit.ApiInterface
 import pt.mobiweb.mvp2.utils.retrofit.RetrofitClient
-import pt.mobiweb.mvp2.utils.dropBreadcrumb
 
 class HomePresenter(private var view: HomeContract.View): HomeContract.Presenter {
 
@@ -17,7 +15,6 @@ class HomePresenter(private var view: HomeContract.View): HomeContract.Presenter
     private lateinit var jsonApi: ApiInterface
     private var compositeDisposable = CompositeDisposable()
 
-    @SuppressLint("CheckResult")
     override fun showAllPosts() {
 
         //Initial view functions handling
@@ -40,9 +37,6 @@ class HomePresenter(private var view: HomeContract.View): HomeContract.Presenter
                 view.handleErrorCardView(true)
             }
         }
-
-
-
     }
 
     //Try to fetch data from API
