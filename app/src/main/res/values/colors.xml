@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="navigationViewBackground">#202020</color>
+    <color name="tab_background_unselected">#9A999A</color>
+    <color name="tab_background_selected">#FFFFFF</color>
 </resources>
