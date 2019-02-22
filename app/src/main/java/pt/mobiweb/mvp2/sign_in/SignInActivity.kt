@@ -15,7 +15,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
 
     //Overrides
     override fun onSuccess(message: String) {
-        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onError(message: String) {

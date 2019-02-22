@@ -6,6 +6,9 @@ interface HomeContract {
 
     interface View{
         fun getPopulatedList(postsList: List<PostModel>)
+        fun handleErrorCardView(show: Boolean)
+        fun handleProgressbarView(show: Boolean)
+        fun handleInternetToast(show: Boolean)
     }
 
     interface Presenter{
