@@ -7,6 +7,7 @@ interface ArtistsContract {
     interface View {
         fun getPopulatedList(postsList: List<PostModel>)
         fun handleProgressbarView(show: Boolean)
+        fun showConnectionStatus()
     }
 
     interface Presenter {

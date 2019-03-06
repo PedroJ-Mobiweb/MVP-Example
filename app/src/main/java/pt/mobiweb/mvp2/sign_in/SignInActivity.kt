@@ -7,6 +7,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import pt.mobiweb.mvp2.R
 import pt.mobiweb.mvp2.home.HomeActivity
+import pt.mobiweb.mvp2.utils.AppPrefs
 
 class SignInActivity : AppCompatActivity(), SignInContract.View {
 
@@ -38,6 +39,8 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
         signIn_btn_signIn.setOnClickListener {
             signInPresenter.onSignIn(signIn_et_email.text.toString(), signIn_et_password.text.toString())
         }
+
+        AppPrefs.mValue = "uma mudança"
 
     }
 }

@@ -3,9 +3,11 @@ package pt.mobiweb.mvp2.main
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import pt.mobiweb.mvp2.R
 import pt.mobiweb.mvp2.sign_in.SignInActivity
+import pt.mobiweb.mvp2.utils.AppPrefs
 
 /**
  * Displays the Main Screen
@@ -29,9 +31,16 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         //Init
         mainPresenter = MainPresenter(this)
 
-        //Event
-        main_btn_sign_in.setOnClickListener {
-            mainPresenter.signInButtonClick()
+        AppPrefs.init(this)
+
+        if (!AppPrefs.firstRun) {
+            AppPrefs.firstRun = true
         }
+
+        Log.d("firstRun", AppPrefs.firstRun.toString())
+        Log.d("mValue", AppPrefs.mValue)
+
+        //Event
+        main_btn_sign_in.setOnClickListener { mainPresenter.signInButtonClick() }
     }
 }

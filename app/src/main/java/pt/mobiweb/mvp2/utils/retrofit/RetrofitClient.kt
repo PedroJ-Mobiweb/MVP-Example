@@ -1,6 +1,7 @@
 package pt.mobiweb.mvp2.utils.retrofit
 
 import okhttp3.OkHttpClient
+import pt.mobiweb.mvp2.utils.Constants
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -8,7 +9,6 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    private const val baseUrl = "https://jsonplaceholder.typicode.com/"
     private var mInstance: Retrofit?= null
     private val okHttpClient = OkHttpClient()
 
@@ -22,7 +22,7 @@ object RetrofitClient {
 
         if (mInstance == null){
             mInstance = Retrofit.Builder()
-                .baseUrl(baseUrl)
+                .baseUrl(Constants.BASE_URL_HTTPS)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

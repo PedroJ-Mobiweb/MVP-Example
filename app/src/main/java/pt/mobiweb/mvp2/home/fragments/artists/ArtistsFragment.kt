@@ -9,6 +9,8 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_artists.*
 import pt.mobiweb.mvp2.R
 import pt.mobiweb.mvp2.home.recycler_view.adapter.PostsAdapter
@@ -25,6 +27,7 @@ class ArtistsFragment : Fragment(), ArtistsContract.View {
 
     //Variables
     private lateinit var artistsPresenter: ArtistsPresenter
+    private var compositeDisposable = CompositeDisposable()
 
     //Overrides
     override fun getPopulatedList(postsList: List<PostModel>) {
@@ -40,6 +43,9 @@ class ArtistsFragment : Fragment(), ArtistsContract.View {
         }
     }
 
+    override fun showConnectionStatus() {
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -48,10 +54,19 @@ class ArtistsFragment : Fragment(), ArtistsContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        artistsPresenter = ArtistsPresenter(this)
+        artistsPresenter = ArtistsPresenter(this, compositeDisposable)
 
         artistsPresenter.showAllPosts()
     }
 
+    override fun onResume() {
+        super.onResume()
+        showConnectionStatus()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
+    }
 
 }

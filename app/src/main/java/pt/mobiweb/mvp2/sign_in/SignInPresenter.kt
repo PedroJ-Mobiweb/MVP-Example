@@ -7,7 +7,6 @@ import io.reactivex.schedulers.Schedulers
 import pt.mobiweb.mvp2.utils.retrofit.models.UserCredentials
 import pt.mobiweb.mvp2.utils.retrofit.ApiInterface
 import pt.mobiweb.mvp2.utils.retrofit.RetrofitClient
-import pt.mobiweb.mvp2.utils.dropBreadcrumb
 
 class SignInPresenter(private var view: SignInContract.View): SignInContract.Presenter {
 
@@ -57,7 +56,6 @@ class SignInPresenter(private var view: SignInContract.View): SignInContract.Pre
             )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .dropBreadcrumb()
                 .subscribe(
                     //OnNext
                     { view.navigateToSuccessfulSignIn() },

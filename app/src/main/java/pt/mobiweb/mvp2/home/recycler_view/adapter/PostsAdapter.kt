@@ -18,10 +18,14 @@ class PostsAdapter(private val postsList: List<PostModel>): RecyclerView.Adapter
     override fun getItemCount() = postsList.size
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        p0.userId.text = postsList[p1].userId.toString()
-        p0.id.text = postsList[p1].id.toString()
-        p0.title.text = postsList[p1].title
-        p0.body.text = postsList[p1].body
+        val post = postsList[p1]
+
+        with(post){
+            p0.userId.text = userId.toString()
+            p0.id.text = id.toString()
+            p0.title.text = title
+            p0.body.text = body
+        }
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
