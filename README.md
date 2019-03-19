@@ -1,8 +1,8 @@
 # What are they?
 Patterns are created to solve problems that concurrently occur, thus allowing developers to follow a structure and ultimately improve the code comprehensibility, provide better organization and scalability. It is also great to use a well-known pattern as that helps others, who pick up your project, later on, to understand what is going on.
 
-![MVP](/images/mvp.png)
-Format: ![Alt Text](url)
+## MVP Representation
+![MVP](https://cdn.journaldev.com/wp-content/uploads/2017/08/android-mvp-flow.png)
 
 MVP separates your code in three main layers which allow you to have different abstraction layers for different responsibilities
 
