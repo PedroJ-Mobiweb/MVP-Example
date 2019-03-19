@@ -21,10 +21,10 @@ object AppPrefs {
         editor.apply()
     }
 
-    // vars to edit
+    // SP content
     var firstRun: Boolean
-    get() = preferences.getBoolean(IS_FIRST_RUN_PREFS.first, IS_FIRST_RUN_PREFS.second)
-    set(value) = preferences.edit { it.putBoolean(IS_FIRST_RUN_PREFS.first, value) }
+        get() = preferences.getBoolean(IS_FIRST_RUN_PREFS.first, IS_FIRST_RUN_PREFS.second)
+        set(value) = preferences.edit { it.putBoolean(IS_FIRST_RUN_PREFS.first, value) }
 
     var mValue: String?
         get() = preferences.getString(MY_VALUE.first, MY_VALUE.second)

@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Android Auto-Generated -->
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#FFFFFF</color>
+
+    <!-- Home Bottom Navigation View -->
     <color name="navigationViewBackground">#202020</color>
     <color name="tab_background_unselected">#9A999A</color>
     <color name="tab_background_selected">#FFFFFF</color>
+
+    <!-- Internet Connection Snackbar -->
+    <color name="include_snackbar_bg_offline">#3C3F41</color>
+    <color name="include_snackbar_bg_online">#64DD17</color>
 </resources>

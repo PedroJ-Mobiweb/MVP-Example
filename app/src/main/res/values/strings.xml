@@ -1,5 +1,15 @@
 <resources>
+
+    <!-- Home Bottom Navigation -->
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <!-- Internet Connection Snackbar -->
+    <string name="include_offline">You are offline now.</string>
+    <string name="include_online">You are online now.</string>
+
+    <!-- Main Activity -->
+    <string name="main_sign_in_button">SIGN IN</string>
+    <string name="act_sign_in_button_text">sign in</string>
 </resources>

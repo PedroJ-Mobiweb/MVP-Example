@@ -1,6 +1,5 @@
 package pt.mobiweb.mvp2.home.fragments.artists
 
-
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -9,7 +8,6 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.Toast
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_artists.*
 import pt.mobiweb.mvp2.R
@@ -30,38 +28,30 @@ class ArtistsFragment : Fragment(), ArtistsContract.View {
     private var compositeDisposable = CompositeDisposable()
 
     //Overrides
-    override fun getPopulatedList(postsList: List<PostModel>) {
+    override fun populateRecyclerView(postsList: List<PostModel>) {
         frag_artists_recyclerView?.setHasFixedSize(true)
         frag_artists_recyclerView?.layoutManager = LinearLayoutManager(context)
         frag_artists_recyclerView?.adapter = PostsAdapter(postsList)
     }
 
     override fun handleProgressbarView(show: Boolean) {
-        when(show){
-            true -> frag_artists_progressBar?.visibility = VISIBLE
-            false -> frag_artists_progressBar?.visibility = GONE
+        when (show) {
+            true -> frag_artists_include_progressbar?.visibility = VISIBLE
+            false -> frag_artists_include_progressbar?.visibility = GONE
         }
     }
 
-    override fun showConnectionStatus() {
-    }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_artists, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         artistsPresenter = ArtistsPresenter(this, compositeDisposable)
-
         artistsPresenter.showAllPosts()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        showConnectionStatus()
     }
 
     override fun onDestroy() {

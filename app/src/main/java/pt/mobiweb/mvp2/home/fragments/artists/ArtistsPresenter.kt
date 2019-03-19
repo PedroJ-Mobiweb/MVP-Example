@@ -4,6 +4,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import pt.mobiweb.mvp2.home.recycler_view.model.PostModel
+import pt.mobiweb.mvp2.utils.RxBus
+import pt.mobiweb.mvp2.utils.RxEvent
 import pt.mobiweb.mvp2.utils.retrofit.ApiInterface
 import pt.mobiweb.mvp2.utils.retrofit.RetrofitClient
 
@@ -24,6 +26,7 @@ class ArtistsPresenter(
         jsonApi = retrofit.create(ApiInterface::class.java)
 
         getPostsFromAPI()
+        compositeDisposable.add(RxBus.listen(RxEvent.EventBackOnline::class.java).subscribe { getPostsFromAPI() })
     }
 
     private fun getPostsFromAPI() {
@@ -36,7 +39,7 @@ class ArtistsPresenter(
                     { t: List<PostModel> ->
                         postsList = t
                         view.handleProgressbarView(false)
-                        view.getPopulatedList(postsList)
+                        view.populateRecyclerView(postsList)
                     },
 
                     //OnError

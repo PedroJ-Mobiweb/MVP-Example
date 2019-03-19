@@ -1,19 +1,17 @@
 package pt.mobiweb.mvp2.main
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View.VISIBLE
 import kotlinx.android.synthetic.main.activity_main.*
 import pt.mobiweb.mvp2.R
 import pt.mobiweb.mvp2.sign_in.SignInActivity
 import pt.mobiweb.mvp2.utils.AppPrefs
+import pt.mobiweb.mvp2.utils.BaseActivity
+import pt.mobiweb.mvp2.utils.GlobalVariables
 
-/**
- * Displays the Main Screen
- */
-
-class MainActivity : AppCompatActivity(), MainContract.View {
+class MainActivity : BaseActivity(), MainContract.View {
 
     //Variables
     private lateinit var mainPresenter: MainPresenter
@@ -22,6 +20,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override fun navigateToSignInScreen() {
         val intent = Intent(applicationContext, SignInActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,5 +41,11 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         //Event
         main_btn_sign_in.setOnClickListener { mainPresenter.signInButtonClick() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!GlobalVariables.connectionStatus)
+            include_connection_snackbar.visibility = VISIBLE
     }
 }
